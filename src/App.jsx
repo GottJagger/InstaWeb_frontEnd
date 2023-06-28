@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Fruta from "./components/Fruta";
+import GranTotal from "./components/GranTotal";
 
-function App() {
-  const [count, setCount] = useState(0)
+const frutas = [
+    {
+        id:123,
+        name:"Manzana",
+        price: 231
+    },
+    {
+        id:345,
+        name:"Fresa",
+        price: 7644
+    },
+    {
+        id:678,
+        name:"Mango",
+        price: 300                      
+    }
+]
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+class App extends React.Component {
+    constructor(){
+        super()
+        
+    }
+    render(){
+        return (
+            <>
+                <h1>Carrito de frutas</h1>
+                {frutas.map(fruta =>
+                    <Fruta key = {fruta.id} name = {fruta.name} price = {fruta.price}/>)
+                }
+                <GranTotal/>
+            </>
+        )
+    }
 }
 
-export default App
+export default App 
